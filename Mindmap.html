@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mind Map Multi-Topic</title>
+<link rel="stylesheet" href="ali.css">
+</head>
+<body>
+
+<div class="mindmap">
+
+    <!-- CENTER NODE -->
+    <div class="center-node" contenteditable="true" spellcheck="false">
+        Click here to type your topic
+    </div>
+
+    <!-- BRANCHES FOR "What is Information Technology" -->
+    <div class="branch topic1">IT involves using computers and networks to process data.</div>
+    <div class="branch topic1">Software development and programming are part of IT.</div>
+    <div class="branch topic1">IT includes cybersecurity and protecting data.</div>
+    <div class="branch topic1">Database management organizes and stores information.</div>
+    <div class="branch topic1">Hardware such as computers, servers, and devices is part of IT.</div>
+    <div class="branch topic1">IT helps businesses automate tasks for efficiency.</div>
+    <div class="branch topic1">Networking connects systems and enables communication.</div>
+    <div class="branch topic1">IT supports cloud computing and remote services.</div>
+
+    <!-- BRANCHES FOR "Give me 8 research proposal title" -->
+    <div class="branch topic2">AI in Education: Enhancing Student Learning Outcomes.</div>
+    <div class="branch topic2">Cybersecurity Measures for Small Businesses in the Philippines.</div>
+    <div class="branch topic2">Blockchain-Based Voting Systems: A Feasibility Study.</div>
+    <div class="branch topic2">IoT in Smart Homes: Security and Efficiency Challenges.</div>
+    <div class="branch topic2">Mobile App Development for Disaster Management.</div>
+    <div class="branch topic2">Data Analytics for Improving Healthcare Services.</div>
+    <div class="branch topic2">Cloud Computing Adoption in Philippine SMEs.</div>
+    <div class="branch topic2">Gamification in Online Learning Platforms.</div>
+
+    <!-- BRANCHES FOR "How AI affect our daily life?" -->
+    <div class="branch topic3">AI-powered virtual assistants help manage schedules.</div>
+    <div class="branch topic3">Recommendation systems personalize shopping experiences.</div>
+    <div class="branch topic3">Smart home devices automate daily tasks.</div>
+    <div class="branch topic3">AI helps in traffic monitoring and navigation apps.</div>
+    <div class="branch topic3">AI aids healthcare through diagnostics and monitoring.</div>
+    <div class="branch topic3">Social media uses AI for content suggestions.</div>
+    <div class="branch topic3">AI improves customer service with chatbots.</div>
+    <div class="branch topic3">AI-driven finance apps help manage personal budgets.</div>
+
+</div>
+
+<script>
+const branches = document.querySelectorAll(".branch");
+const centerNode = document.querySelector(".center-node");
+
+// Hide all branches
+function hideAllBranches() {
+    branches.forEach(branch => {
+        branch.style.opacity = "0";
+        branch.style.transform = "translate(0,0) scale(0.5)";
+    });
+}
+
+// Show branches for selected topic
+function showBranches(topicClass) {
+    hideAllBranches(); // hide previous topic first
+    const topicBranches = document.querySelectorAll(`.${topicClass}`);
+    const radius = 250;
+    const total = topicBranches.length;
+
+    topicBranches.forEach((branch, i) => {
+        const angle = (i / total) * (2 * Math.PI);
+        const x = radius * Math.cos(angle);
+        const y = radius * Math.sin(angle);
+
+        const branchWidth = branch.offsetWidth / 2;
+        const branchHeight = branch.offsetHeight / 2;
+
+        setTimeout(() => {
+            branch.style.transform = `translate(${x - branchWidth}px, ${y - branchHeight}px) scale(1)`;
+            branch.style.opacity = "1";
+        }, i * 300);
+    });
+}
+
+// Detect topic typed
+centerNode.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        const topic = centerNode.textContent.toLowerCase().trim();
+
+        if(topic.includes("information technology")) showBranches("topic1");
+        else if(topic.includes("research proposal")) showBranches("topic2");
+        else if(topic.includes("ai affect")) showBranches("topic3");
+
+        centerNode.blur();
+    }
+});
+</script>
+
+</body>
+</html>
