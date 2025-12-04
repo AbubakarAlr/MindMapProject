@@ -123,5 +123,32 @@ body {
 .topic3:nth-child(24) { background: #3b82f6; color: white; }
 .topic3:nth-child(25) { background: #22c55e; color: white; }
 
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    animation: darkRainbowLoop 10s linear infinite;
+}
+
+/* Dark rainbow colors animation */
+@keyframes darkRainbowLoop {
+    0%   { background-color: #8B0000; } /* Dark Red */
+    14%  { background-color: #FF4500; } /* Dark Orange */
+    28%  { background-color: #B8860B; } /* Dark Goldenrod */
+    42%  { background-color: #006400; } /* Dark Green */
+    57%  { background-color: #00008B; } /* Dark Blue */
+    71%  { background-color: #4B0082; } /* Indigo */
+    85%  { background-color: #551A8B; } /* Dark Violet */
+    100% { background-color: #8B0000; } /* Back to Dark Red */
+}
+
+
 
 /* You can also add separate colors for topic2 and topic3 if desired */
+
