@@ -46,11 +46,18 @@
 
 </div>
 
+<!-- FOOTER -->
+<footer class="page-footer">
+    Developed by CICS Students from BSIT-2D: 
+    Abubakar, Alihnur &nbsp;|&nbsp; Mahinay, Erich Paul &nbsp;|&nbsp; Contrata, Mark David &nbsp;|&nbsp; Wee, Clyde
+</footer>
+
 <script>
 window.onload = function() {
     const branches = document.querySelectorAll(".branch");
     const centerNode = document.querySelector(".center-node");
 
+    // Hide all branches
     function hideAllBranches() {
         branches.forEach(branch => {
             branch.style.opacity = "0";
@@ -58,6 +65,7 @@ window.onload = function() {
         });
     }
 
+    // Show branches for selected topic in circular layout with animation
     function showBranches(topicClass) {
         hideAllBranches();
         const topicBranches = document.querySelectorAll(`.${topicClass}`);
@@ -75,10 +83,11 @@ window.onload = function() {
             setTimeout(() => {
                 branch.style.transform = `translate(${x - branchWidth}px, ${y - branchHeight}px) scale(1)`;
                 branch.style.opacity = "1";
-            }, i * 300); // Staggered animation
+            }, i * 300);
         });
     }
 
+    // Detect topic typed
     centerNode.addEventListener("keypress", function(e) {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -93,12 +102,6 @@ window.onload = function() {
     });
 };
 </script>
-
-<!-- FOOTER -->
-<footer class="page-footer">
-    Developed by CICS Students from BSIT-2D: 
-    Abubakar, Alihnur &nbsp;|&nbsp; Mahinay, Erich Paul &nbsp;|&nbsp; Contrata, Mark David &nbsp;|&nbsp; Wee, Clyde
-</footer>
 
 </body>
 </html>
