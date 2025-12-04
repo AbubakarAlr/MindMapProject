@@ -127,6 +127,32 @@ body {
     position: fixed;
     bottom: 0;
     width: 100%;
+    background: #4a90e2;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    color: white;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+    animation: colorLoop 10s linear infinite; /* Apply animation */
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
     text-align: center;
     padding: 10px 0;
     font-family: Arial, sans-serif;
@@ -150,5 +176,6 @@ body {
 
 
 
-/* You can also add separate colors for topic2 and topic3 if desired */
 
+
+/* You can also add separate colors for topic2 and topic3 if desired */
