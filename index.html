@@ -47,59 +47,58 @@
 </div>
 
 <script>
-const branches = document.querySelectorAll(".branch");
-const centerNode = document.querySelector(".center-node");
+window.onload = function() {
+    const branches = document.querySelectorAll(".branch");
+    const centerNode = document.querySelector(".center-node");
 
-// Hide all branches
-function hideAllBranches() {
-    branches.forEach(branch => {
-        branch.style.opacity = "0";
-        branch.style.transform = "translate(0,0) scale(0.5)";
-    });
-}
-
-// Show branches for selected topic
-function showBranches(topicClass) {
-    hideAllBranches(); // hide previous topic first
-    const topicBranches = document.querySelectorAll(`.${topicClass}`);
-    const radius = 250;
-    const total = topicBranches.length;
-
-    topicBranches.forEach((branch, i) => {
-        const angle = (i / total) * (2 * Math.PI);
-        const x = radius * Math.cos(angle);
-        const y = radius * Math.sin(angle);
-
-        const branchWidth = branch.offsetWidth / 2;
-        const branchHeight = branch.offsetHeight / 2;
-
-        setTimeout(() => {
-            branch.style.transform = `translate(${x - branchWidth}px, ${y - branchHeight}px) scale(1)`;
-            branch.style.opacity = "1";
-        }, i * 300);
-    });
-}
-
-// Detect topic typed
-centerNode.addEventListener("keypress", function(e) {
-    if (e.key === "Enter") {
-        e.preventDefault();
-        const topic = centerNode.textContent.toLowerCase().trim();
-
-        if(topic.includes("information technology")) showBranches("topic1");
-        else if(topic.includes("research proposal")) showBranches("topic2");
-        else if(topic.includes("ai affect")) showBranches("topic3");
-
-        centerNode.blur();
+    function hideAllBranches() {
+        branches.forEach(branch => {
+            branch.style.opacity = "0";
+            branch.style.transform = "translate(0,0) scale(0.5)";
+        });
     }
-});
+
+    function showBranches(topicClass) {
+        hideAllBranches();
+        const topicBranches = document.querySelectorAll(`.${topicClass}`);
+        const radius = 250;
+        const total = topicBranches.length;
+
+        topicBranches.forEach((branch, i) => {
+            const angle = (i / total) * (2 * Math.PI);
+            const x = radius * Math.cos(angle);
+            const y = radius * Math.sin(angle);
+
+            const branchWidth = branch.offsetWidth / 2;
+            const branchHeight = branch.offsetHeight / 2;
+
+            setTimeout(() => {
+                branch.style.transform = `translate(${x - branchWidth}px, ${y - branchHeight}px) scale(1)`;
+                branch.style.opacity = "1";
+            }, i * 300); // Staggered animation
+        });
+    }
+
+    centerNode.addEventListener("keypress", function(e) {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            const topic = centerNode.textContent.toLowerCase().trim();
+
+            if(topic.includes("information technology")) showBranches("topic1");
+            else if(topic.includes("research proposal")) showBranches("topic2");
+            else if(topic.includes("ai affect")) showBranches("topic3");
+
+            centerNode.blur();
+        }
+    });
+};
 </script>
 
-</body>
-    <!-- FOOTER -->
+<!-- FOOTER -->
 <footer class="page-footer">
     Developed by CICS Students from BSIT-2D: 
     Abubakar, Alihnur &nbsp;|&nbsp; Mahinay, Erich Paul &nbsp;|&nbsp; Contrata, Mark David &nbsp;|&nbsp; Wee, Clyde
 </footer>
-</html>
 
+</body>
+</html>
